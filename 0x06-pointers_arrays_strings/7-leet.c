@@ -1,37 +1,24 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
+#include "main.h"
 /**
- * leet - Encodes a string into 1337.
- * @str: The input string to be encoded.
- *
- * Return: A pointer to the encoded string.
+ * leet - encode into 1337speak
+ * @n: input value
+ * Return: n value
  */
-char *leet(char *str)
+char *leet(char *n)
 {
-	int len = strlen(str);
-	int i;
-	char *encoded = malloc((len + 1) * sizeof(char));
+	int i, j;
+	char s1[] = "aAeEoOtTlL";
+	char s2[] = "4433007711";
 
-	if (encoded == NULL)
-		return (NULL);
-
-	for (i = 0; i < len; i++)
+	for (i = 0; n[i] != '\0'; i++)
 	{
-		encoded[i] = str[i];
-		if (str[i] == 'a' || str[i] == 'A')
-			encoded[i] = '4';
-		else if (str[i] == 'e' || str[i] == 'E')
-			encoded[i] = '3';
-		else if (str[i] == 'o' || str[i] == 'O')
-			encoded[i] = '0';
-		else if (str[i] == 't' || str[i] == 'T')
-			encoded[i] = '7';
-		else if (str[i] == 'l' || str[i] == 'L')
-			encoded[i] = '1';
+		for (j = 0; j < 10; j++)
+		{
+			if (n[i] == s1[j])
+			{
+				n[i] = s2[j];
+			}
+		}
 	}
-
-	encoded[len] = '\0';
-	return (encoded);
+	return (n);
 }
